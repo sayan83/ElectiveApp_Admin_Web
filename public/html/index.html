@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+
+    <style>
+        body {
+            background-color:#6abadeba; 
+        }
+
+        label {
+            color: #08ffd1;  
+            font-size: 1rem;
+        }
+
+        input {
+            border: none;  
+            border-radius: 3px;
+            width: 17vw;
+            height: 2vw;
+        }
+
+        button {
+            border: none;
+            border-radius: 3px;
+            padding-left: 7px;
+            color: black;
+            height: 1.8vw;
+            width: 7vw;
+        }
+
+        #login-heading {
+            text-align: center;  
+            color: #277582;  
+            padding: 20px; 
+        }
+
+        #login-container {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .loginscreen {
+            border: 1px solid gray;
+            padding: 2vw 1vw;
+            border-radius: 5px;
+            background: #23463f;
+        }
+
+        #buttoncontainer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #backBtn {
+            position: absolute;
+            left: 95%;
+            transform: translate(-100%,0);
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2><div id="login-heading">ADMIN LOGIN</div></h2>
+        <div class="loginscreen" id="login-form">
+            <label>Password :</label> <br>
+            <input id="password" type="password" placeholder="Password"/> <br><br>
+            <div id="buttoncontainer">
+                <button type="submit" onclick="login()">LOGIN</button>
+                <div onclick="showResetPassword()"><label>Forgot Password?</label> </div>
+            </div>
+        </div>
+        <div class="loginscreen" id="forgot-password" style="display: none;">
+            <label>Click to send OTP to admin Email</label> <br><br>
+            <button onclick="sendOTP()">Send OTP</button><br><br>
+            <input type="number" id="otp" placeholder="Enter OTP" /> <br><br>
+            <input type="password" id="newpassword" placeholder="Enter new password"> <br><br>
+            <button type="submit" onclick="resetPassword()">Reset Password</button>
+            <button id="backBtn" onclick="back()">BACK</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="/js/auth.js"></script>
+</html>

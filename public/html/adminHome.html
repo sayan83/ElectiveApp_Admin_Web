@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+
+    <style>
+        body {
+            background-color:#6abadeba; 
+            margin: 0;
+        }
+
+        label {
+            color: #08ffd1;  
+            font-size: 1rem;
+        }
+
+        input, select {
+            border: none;  
+            border-radius: 3px;
+            width: 17vw;
+            height: 2vw;
+        }
+
+        button {
+            border: none;
+            border-radius: 3px;
+            padding-left: 7px;
+            color: black;
+            height: 1.8vw;
+            width: 7vw;
+        }
+
+        .heading {
+            text-align: center;  
+            color: #277582;  
+            padding: 20px; 
+        }
+
+        #batch-container {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            /* display: none; */
+        }
+
+        #elective-container {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        #batch-details-form {
+            border: 1px solid gray;
+            padding: 2vw 1vw;
+            border-radius: 5px;
+            background: #23463f;
+        }
+
+        #elective-details-form {
+            border: 1px solid gray;
+            padding: 2vw 1vw;
+            border-radius: 5px;
+            background: #23463f;
+        }
+
+        #assign {
+            width: 13vw;
+        }
+
+        #loader-container {
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+            z-index: 5;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        #logout{
+            position: absolute;
+            left: 95%;
+            transform: translate(-100%,0);
+        }
+
+        .dots-7 {
+            width:50px;
+            height:12px;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            color: #08ffd1;
+            background: 
+                radial-gradient(circle closest-side,currentColor 90%,#0000) 0%   50%,
+                radial-gradient(circle closest-side,currentColor 90%,#0000) 50%  50%,
+                radial-gradient(circle closest-side,currentColor 90%,#0000) 100% 50%;
+            background-size:calc(100%/3) 100%;
+            background-repeat: no-repeat;
+            animation:d7 1s infinite linear;
+        }
+        @keyframes d7 {
+            33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%}
+            50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
+            66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
+        }
+    </style>
+</head>
+<body>
+    <div id="batch-container">
+        <div class="heading"><h2>ENTER BATCH DETAILS</h2></div>
+        <div id="batch-details-form">
+            <label>Semester :</label> <br>
+            <select name="sem" id="sem">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select> <br><br>
+            <label>Department :</label> <br>
+            <select name="dept" id="dept">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="IT">IT</option>
+                <option value="Civil">Civil</option>
+                <option value="Mechanical">Mechanical</option>
+            </select> <br><br>
+             
+            <label>Academic Year :</label> <br>
+            <input id="year" type="number"/> <br><br>
+            <button type="submit" onclick="proceed()">NEXT</button> 
+            <button onclick="logout()" id="logout">LOG OUT</button>
+        </div>
+    </div>
+    <div id="loader-container" style="display: none;">
+        <div class="dots-7"></div>
+    </div>
+    <div id="elective-container">
+        <div class="heading" id="batch-heading"><h2>ELECTIVE OPTIONS FOR </h2></div>
+        <div id="elective-details-form">
+            <label>Elective Name :</label> <br>
+            <select name="electiveName" id="electiveName">
+            </select> <br><br>
+            <label id="subject-label">Subjects :</label> <br>
+            <select name="subjects" id="subjects">
+            </select> 
+            <div id="new-elective" style="display: none;">
+                <label>Elective Name :</label> <br>
+                <input id="newElectiveName" type="text" /> <br><br>
+                <label id="add-subject-text">Add atleast one subject for this elective </label>
+            </div><br><br>
+            <div id="subject-details">
+                <label id="assignedCount"></label> <br>
+                <label id="maxCount"></label>
+            </div>
+            <div id="new-subject" style="display: none;">
+                <label>Paper Code</label> <br>
+                <input id="pcode" type="text" /> <br><br>
+                <label>Max Student Count</label> <br>
+                <input id="maxCountInput" type="number" /> <br><br>
+                <button type="submit" id="addNew"></button> 
+            </div> 
+            <button type="submit" style="margin-left: 100%; transform: translate(-100%,-100%);" onclick="back()">BACK</button> <br>
+            <hr> <br>
+            <center><button type="submit" onclick="assign()" id="assign">ASSIGN ELECTIVES</button></center> <br>
+            <center><button onclick="logout()">LOG OUT</button></center>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="/js/checkCredentials.js"></script>
+<script type="text/javascript" src="/js/electives.js"></script>
+</html>
