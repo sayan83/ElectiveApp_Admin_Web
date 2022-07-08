@@ -7,7 +7,7 @@ async function login() {
     	const data = JSON.stringify({
 			password: password
 		})
-        const attemptLogin = await fetch("http://localhost:3000/adminLogin", { 
+        const attemptLogin = await fetch(`${process.env.APP_URL}adminLogin`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -40,7 +40,7 @@ async function login() {
 
 async function sendOTP() {
     try {
-        const attemptOTP = await fetch("http://localhost:3000/sendOTP", { 
+        const attemptOTP = await fetch(`${process.env.APP_URL}sendOTP`, { 
 		    method: "GET",
 			credentials: 'include', 
 		});
@@ -66,7 +66,7 @@ async function resetPassword() {
 			password: newPassword,
 			OTP: otp
 		});
-        const attemptReset = await fetch("http://localhost:3000/resetPassword", { 
+        const attemptReset = await fetch(`${process.env.APP_URL}resetPassword`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -117,7 +117,7 @@ async function checkLoginStatus() {
     	const data = JSON.stringify({
             accessTokens
 		})
-        const response = await fetch("http://localhost:3000/verifyTokens", { 
+        const response = await fetch(`${process.env.APP_URL}verifyTokens`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {

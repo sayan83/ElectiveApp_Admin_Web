@@ -9,7 +9,7 @@ async function checkCredentials() {
     	const data = JSON.stringify({
             accessTokens
 		})
-        const response = await fetch("http://localhost:3000/verifyTokens", { 
+        const response = await fetch(`${process.env.APP_URL}verifyTokens`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {

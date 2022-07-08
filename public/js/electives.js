@@ -33,7 +33,7 @@ async function getElectiveNames() {
             dept,
             year
 		})
-        const response = await fetch("http://localhost:3000/electiveNames", { 
+        const response = await fetch(`${process.env.APP_URL}electiveNames`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -140,7 +140,7 @@ async function addElective() {
             maxCount,
             electiveName
 		})
-        const response = await fetch("http://localhost:3000/addNewSubject", { 
+        const response = await fetch(`${process.env.APP_URL}addNewSubject`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -181,7 +181,7 @@ async function getSubjectNames(electiveName) {
             year,
             electiveName
 		})
-        const response = await fetch("http://localhost:3000/subjectNames", { 
+        const response = await fetch(`${process.env.APP_URL}subjectNames`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -266,7 +266,7 @@ async function getSubjectDetails(pcode) {
             year,
             pcode
 		})
-        const response = await fetch("http://localhost:3000/subjectDetails", { 
+        const response = await fetch(`${process.env.APP_URL}subjectDetails`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -309,7 +309,7 @@ async function addSubject() {
             maxCount,
             electiveName
 		})
-        const response = await fetch("http://localhost:3000/addNewSubject", { 
+        const response = await fetch(`${process.env.APP_URL}addNewSubject`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -348,7 +348,7 @@ async function assign() {
             dept,
             year
 		})
-        const response = await fetch("http://localhost:3000/assignElectives", { 
+        const response = await fetch(`${process.env.APP_URL}assignElectives`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -388,7 +388,7 @@ async function downloadCSV() {
             dept,
             year
 		})
-        const response = await fetch("http://localhost:3000/getCSV", { 
+        const response = await fetch(`${process.env.APP_URL}getCSV`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
