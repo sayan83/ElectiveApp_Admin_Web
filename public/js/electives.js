@@ -33,7 +33,7 @@ async function getElectiveNames() {
             dept,
             year
 		})
-        const response = await fetch(`${process.env.APP_URL}electiveNames`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/electiveNames`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -140,7 +140,7 @@ async function addElective() {
             maxCount,
             electiveName
 		})
-        const response = await fetch(`${process.env.APP_URL}addNewSubject`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/addNewSubject`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -181,7 +181,7 @@ async function getSubjectNames(electiveName) {
             year,
             electiveName
 		})
-        const response = await fetch(`${process.env.APP_URL}subjectNames`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/subjectNames`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -266,7 +266,7 @@ async function getSubjectDetails(pcode) {
             year,
             pcode
 		})
-        const response = await fetch(`${process.env.APP_URL}subjectDetails`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/subjectDetails`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -309,7 +309,7 @@ async function addSubject() {
             maxCount,
             electiveName
 		})
-        const response = await fetch(`${process.env.APP_URL}addNewSubject`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/addNewSubject`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -348,7 +348,7 @@ async function assign() {
             dept,
             year
 		})
-        const response = await fetch(`${process.env.APP_URL}assignElectives`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/assignElectives`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
@@ -388,7 +388,7 @@ async function downloadCSV() {
             dept,
             year
 		})
-        const response = await fetch(`${process.env.APP_URL}getCSV`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/getCSV`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {

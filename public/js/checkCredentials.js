@@ -9,7 +9,7 @@ async function checkCredentials() {
     	const data = JSON.stringify({
             accessTokens
 		})
-        const response = await fetch(`${process.env.APP_URL}verifyTokens`, { 
+        const response = await fetch(`https://elective-app.herokuapp.com/verifyTokens`, { 
 		    method: "POST", 
 		    body: data,
 		    headers: {
